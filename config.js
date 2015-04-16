@@ -10,8 +10,7 @@ config = {
 	// Configure your URL and mail settings here
 	production: {
 		url: 'http://chrisriesgoblog.azurewebsites.net/',
-		mail: {}
-		},
+		mail: {},
 		database: {
 			client: 'sqlite3',
 			connection: {
