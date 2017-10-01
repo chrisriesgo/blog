@@ -20,7 +20,12 @@ parentApp = express();
 
 ghost().then(function (ghostServer) {
     // Mount our ghost instance on our desired subdirectory path if it exists.
+    parentApp.use('/.well-known', express.static('.well-known'));
     parentApp.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
+    
+    parentApp.get('/.well-known/acme-challenge/:fileid', function(req, res){
+        res.send('Requesting '+fileid)
+    })
 
     // Let ghost handle starting our server instance.
     ghostServer.start(parentApp);
